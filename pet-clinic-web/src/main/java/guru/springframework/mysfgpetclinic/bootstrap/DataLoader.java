@@ -29,12 +29,12 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         int count = petTypeService.findAll().size();
 
-        if(count == 0) {
+        if (count == 0) {
             loadData();
         }
     }
 
-    private void loadData(){
+    private void loadData() {
 
         PetType dog = new PetType();
         dog.setName("Dog");
@@ -65,17 +65,16 @@ public class DataLoader implements CommandLineRunner {
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
-        owner1.setAddress("123b Paper str");
-        owner1.setCity("Bruklin");
-        owner1.setTelephone("120987");
+        owner2.setAddress("123b Paper str");
+        owner2.setCity("Bruklin");
+        owner2.setTelephone("120987");
 
         Pet fionasPet = new Pet();
         fionasPet.setName("Billy");
         fionasPet.setPetType(savedCatPetType);
         fionasPet.setBirthDate(LocalDate.now());
         fionasPet.setOwner(owner2);
-        owner1.getPets().add(fionasPet);
-
+        owner2.getPets().add(fionasPet);
         ownerService.save(owner2);
 
         System.out.println("Owners loaded");
