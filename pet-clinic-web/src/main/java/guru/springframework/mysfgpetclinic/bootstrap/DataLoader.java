@@ -80,15 +80,15 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("Owners loaded");
 
         Speciality radiology = new Speciality();
-        radiology.setDescription("radiology");
+        radiology.setDescription("Radiology");
         Speciality savedRadiology = specialityService.save(radiology);
 
         Speciality dentistry = new Speciality();
-        dentistry.setDescription("dentistry");
+        dentistry.setDescription("Dentistry");
         Speciality savedDentistry = specialityService.save(dentistry);
 
         Speciality surgery = new Speciality();
-        surgery.setDescription("surgery");
+        surgery.setDescription("Surgery");
         Speciality savedSurgery = specialityService.save(surgery);
 
         Vet vet1 = new Vet();
@@ -102,6 +102,7 @@ public class DataLoader implements CommandLineRunner {
         Vet vet2 = new Vet();
         vet2.setFirstName("Jessie");
         vet2.setLastName("Porter");
+        vet2.getSpecialities().add(savedRadiology);
         vet2.getSpecialities().add(savedSurgery);
 
         vetService.save(vet2);
