@@ -1,6 +1,5 @@
 package guru.springframework.mysfgpetclinic.services.springdatajpa;
 
-import guru.springframework.mysfgpetclinic.model.Pet;
 import guru.springframework.mysfgpetclinic.model.Visit;
 import guru.springframework.mysfgpetclinic.repositories.PetRepository;
 import guru.springframework.mysfgpetclinic.repositories.VisitRepository;
@@ -16,30 +15,20 @@ import java.util.Set;
 public class VisitSDJpaService implements VisitService {
 
     private final VisitRepository visitRepository;
-    private final PetRepository petRepository;
 
     public VisitSDJpaService(VisitRepository visitRepository, PetRepository petRepository) {
         this.visitRepository = visitRepository;
-        this.petRepository = petRepository;
     }
 
     @Override
     public Visit save(Visit visit) {
 
-        if(visit != null) {
-            Pet pet = visit.getPet();
-            if(pet != null) {
-                if (pet.getId() == null) {
-                    petRepository.save(pet);
-                }
-
-                return visitRepository.save(visit);
-            } else {
-                return null;
-            }
-        } else {
-            return null;
+        if (visit.getPet() == null || visit.getPet().getId() == null || visit.getPet().getOwner() == null
+                || visit.getPet().getOwner().getId() == null) {
+            throw new RuntimeException("Invalid Visit");
         }
+
+        return visitRepository.save(visit);
     }
 
     @Override
