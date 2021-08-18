@@ -2,11 +2,13 @@ package guru.springframework.mysfgpetclinic.services.map;
 
 import guru.springframework.mysfgpetclinic.model.PetType;
 import guru.springframework.mysfgpetclinic.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("map")
 public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
     public PetType save(PetType petType) {
