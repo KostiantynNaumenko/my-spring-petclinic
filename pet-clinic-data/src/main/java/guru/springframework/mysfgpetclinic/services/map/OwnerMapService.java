@@ -40,12 +40,14 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
             if (owner.getPets().size() > 0) {
                 owner.getPets().forEach(pet -> {
                     if (pet.getPetType().getId() != null) {
-                        pet.setPetType(petTypeService.save(pet.getPetType()));
+                        if(pet.getPetType().getId() == null){
+                            pet.setPetType(petTypeService.save(pet.getPetType()));
+                        }
                     } else {
                         throw new RuntimeException("Pet Type is Required!");
                     }
 
-                    if (pet.getId() != null) {
+                    if (pet.getId() == null) {
                         Pet savedPet = petService.save(pet);
                         pet.setId(savedPet.getId());
                     }
