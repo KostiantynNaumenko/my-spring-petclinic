@@ -11,11 +11,11 @@ import java.util.Set;
 
 @Service
 @Profile("map")
-public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
+public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
 
     private final PetService petService;
 
-    public VisitServiceMap(PetService petService) {
+    public VisitMapService(PetService petService) {
         this.petService = petService;
     }
 
