@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Visits</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th style="width: 120px">Date</th>
+    <th style="width: 120px">Pet Name</th>
+    <th style="width: 120px">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!--/*@thymesVar id="visit" type="guru.springframework.mysfgpetclinic.model.Visit"*/-->
+  <tr th:each="visit : ${visits}">
+    <td th:text="${visit.date}"/>
+    <td th:text="${visit.pet.name}"/>
+    <td th:text="${visit.description}"/>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
