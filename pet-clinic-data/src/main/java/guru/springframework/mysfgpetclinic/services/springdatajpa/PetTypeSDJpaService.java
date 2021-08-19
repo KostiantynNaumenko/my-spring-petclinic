@@ -3,12 +3,14 @@ package guru.springframework.mysfgpetclinic.services.springdatajpa;
 import guru.springframework.mysfgpetclinic.model.PetType;
 import guru.springframework.mysfgpetclinic.repositories.PetTypeRepository;
 import guru.springframework.mysfgpetclinic.services.PetTypeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Service
 @Profile({"springdatajpa", "default"})
 public class PetTypeSDJpaService implements PetTypeService {

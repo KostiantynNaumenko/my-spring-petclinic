@@ -5,12 +5,14 @@ import guru.springframework.mysfgpetclinic.model.Vet;
 import guru.springframework.mysfgpetclinic.repositories.SpecialityRepository;
 import guru.springframework.mysfgpetclinic.repositories.VetRepository;
 import guru.springframework.mysfgpetclinic.services.VetService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Service
 @Profile({"springdatajpa", "default"})
 public class VetSDJpaService implements VetService {
