@@ -75,7 +75,11 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
         for (Map.Entry entry : map.entrySet()) {
             if (entry.getValue() instanceof Owner) {
                 Owner tempOwner = (Owner) entry.getValue();
-                if (tempOwner.getLastName().equals(lastName)) return tempOwner;
+                try {
+                    if (tempOwner.getLastName().equals(lastName)) return tempOwner;
+                } catch (NullPointerException e) {
+                    continue;
+                }
             }
         }
         return null;
